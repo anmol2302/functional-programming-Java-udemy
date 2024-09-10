@@ -1,10 +1,16 @@
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class FP01Functional {
+
 
     public static void main(String[] args) {
         printAllNumberInList(List.of(12, 90, 15, 15, 5, 6, 90));
         printEvenNumbers(List.of(12, 90, 15, 15, 5, 6, 90));
+        printOddNumbers(List.of(1,2,3,4,5));
+        List<String> courses = List.of("Spring", "Spring Boot", "API", "microservices", "AWS", "Docker", "Azure", "Kubernates");
+        printCourses(courses);
+
     }
 
     public void print(int num) {
@@ -25,6 +31,30 @@ public class FP01Functional {
 
     public static void printEvenNumbers(List<Integer> number) {
         number.stream().filter(ele -> ele % 2 == 0).forEach(System.out::println);
+    }
+
+    //Exercise 1.1 print odd numbers
+
+    public static void printOddNumbers(List<Integer> numbers){
+        List<Integer>  filteredOddNumbers= numbers.stream().filter((ele) -> ele%2!=0).collect(Collectors.toList());
+        System.out.println("Odd number list is:" + filteredOddNumbers);
+
+    }
+
+    public static void printCourses(List<String> courses) {
+        courses.forEach(ele -> System.out.println(ele));
+
+        //print courses containing spring.
+        System.out.println("Course releated to springs are below:");
+        String result = courses.stream().filter(ele -> ele.contains("Spring")).collect(Collectors.joining(", "));
+        System.out.println(result);
+        //print name atleast 4 chars
+        String filteredResult = courses.stream().filter(ele -> ele.length() >=4).collect(Collectors.joining(", "));
+        System.out.println(String.format("Courses with 4 chars atleast: %s", filteredResult));
+
+
+
+
     }
 
 }
