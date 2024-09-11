@@ -1,15 +1,20 @@
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class FP01Functional {
 
 
     public static void main(String[] args) {
+        List<Integer> num = List.of(12, 90, 15, 15, 5, 6, 90);
         printAllNumberInList(List.of(12, 90, 15, 15, 5, 6, 90));
         printEvenNumbers(List.of(12, 90, 15, 15, 5, 6, 90));
         printOddNumbers(List.of(1,2,3,4,5));
         List<String> courses = List.of("Spring", "Spring Boot", "API", "microservices", "AWS", "Docker", "Azure", "Kubernates");
         printCourses(courses);
+        printSquareOfEvenNumber(num);
+        printCubesOfOddNumber(num);
 
     }
 
@@ -52,9 +57,19 @@ public class FP01Functional {
         String filteredResult = courses.stream().filter(ele -> ele.length() >=4).collect(Collectors.joining(", "));
         System.out.println(String.format("Courses with 4 chars atleast: %s", filteredResult));
 
-
-
+        //print the number of character in each course name
+        courses.stream().forEach(ele -> System.out.println(ele.length()));
+        courses.stream().map(ele -> ele.length()).forEach(System.out::println);
+        Map<String, Integer> courseDetails = courses.stream().collect(Collectors.toMap(Function.identity(), n -> n.length()));
+        System.out.println("course and course name length mapping is:"+ courseDetails);
 
     }
 
+    public static void printSquareOfEvenNumber(List<Integer> numbers){
+        numbers.stream().filter(num -> num%2==0).map(num -> num * num).forEach(System.out::print);
+    }
+
+    public static void printCubesOfOddNumber(List<Integer> num) {
+        num.stream().filter(ele-> ele%2!=0).map(ele -> ele*ele*ele).forEach(System.out::println);
+    }
 }
