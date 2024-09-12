@@ -5,25 +5,25 @@ import java.util.stream.Collectors;
 public class FP02Functional {
 
     public static void main(String[] args) {
-//        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 4, -1);
-//        int sum = calcluateSumOfList(numbers);
-//        System.out.println("the sum of list is:" + sum);
-//
-//        int min = returnMinValue(numbers);
-//        System.out.println("the minimum value of list is:" + min);
-//
-//        int squareSum = squareNumAndSum(numbers);
-//        System.out.println("the square of every number and their sum is:" + squareSum);
-//
-//        int cubeSum = cubeOfNumAndSum(numbers);
-//        System.out.println("the cube of every number and their sum is:" + cubeSum);
-//
-//        int sumOfOddNumbers = sumOfOddNumbers(numbers);
-//        System.out.println("the sum of odd numbers are:" + sumOfOddNumbers);
-//
-//        System.out.println("the sorted numbers are:"+ numbers.stream().sorted().collect(Collectors.toList()));
-//
-//        System.out.println("the distinct elements are:"+numbers.stream().distinct().collect(Collectors.toList()));
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5, 4, -1);
+        int sum = calcluateSumOfList(numbers);
+        System.out.println("the sum of list is:" + sum);
+
+        int min = returnMinValue(numbers);
+        System.out.println("the minimum value of list is:" + min);
+
+        int squareSum = squareNumAndSum(numbers);
+        System.out.println("the square of every number and their sum is:" + squareSum);
+
+        int cubeSum = cubeOfNumAndSum(numbers);
+        System.out.println("the cube of every number and their sum is:" + cubeSum);
+
+        int sumOfOddNumbers = sumOfOddNumbers(numbers);
+        System.out.println("the sum of odd numbers are:" + sumOfOddNumbers);
+
+        System.out.println("the sorted numbers are:"+ numbers.stream().sorted().collect(Collectors.toList()));
+
+        System.out.println("the distinct elements are:"+numbers.stream().distinct().collect(Collectors.toList()));
 
         List<String> courses = List.of("Spring", "Spring Boot", "API", "microservices", "AWS", "Docker", "Azure", "Kubernates");
         sortStringInLengthReverseOrder(courses);
