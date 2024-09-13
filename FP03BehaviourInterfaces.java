@@ -22,6 +22,8 @@ public class FP03BehaviourInterfaces {
                 return true;
             }
         };
+
+        Supplier<String> supplierString = String::new;  //constructor reference.
     }
 
     public static Set<Integer> filterAndPrint(List<Integer> number, Predicate<Integer> filterFunc){
