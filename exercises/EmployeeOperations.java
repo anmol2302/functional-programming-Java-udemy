@@ -52,7 +52,7 @@ public class EmployeeOperations {
         System.out.println("Average salary of employee:"+employees.stream().mapToDouble(emp -> emp.getSalary()).average().getAsDouble());
         System.out.println("the max salary is:"+ employees.stream().mapToDouble(emp -> emp.getSalary()).max());
         System.out.println("the min salary is:"+ employees.stream().mapToDouble(emp -> emp.getSalary()).min());
-        System.out.println("group by department:"+ employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.mapping(Employee::getName, Collectors.toList()))));
+        System.out.println("group by department:"+ employees.stream().collect(Collectors.groupingBy(Employee::getDepartment)));
         System.out.println("Employee above 30 years old:"+ employees.stream().filter(ele -> ele.getSalary()>30).map(emp -> emp.getName()).collect(Collectors.toList()));
         System.out.println("The top 3 high salary:"+ employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).map(ele -> ele.getName()).limit(3).toList());
         System.out.println("Employee count in each department:"+ employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting())));
@@ -68,6 +68,9 @@ public class EmployeeOperations {
         System.out.println("Filter Departments with Total Salary above 100000:"+employees.stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.summingDouble(Employee::getSalary)))
                 .entrySet().stream().filter(emp -> emp.getValue() > 100000).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)) + "\n");
+
+
+        // Report generation
 
         employees.stream().collect(Collectors.groupingBy(Employee::getDepartment, Collectors.collectingAndThen(Collectors.toList(), empList -> {
             double totalSal = empList.stream().mapToDouble(Employee::getSalary).sum();
