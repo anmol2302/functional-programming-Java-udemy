@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class FP06FlatMaps {
@@ -21,7 +22,14 @@ public class FP06FlatMaps {
 
         System.out.println(courses.stream().flatMap(course -> courses2.stream().filter(cou -> cou.length() == course.length()).map(cou -> List.of(course, cou))).filter(li -> !li.get(0).equals(li.get(1))).toList());
 
+
+
+
     }
 
+    //High order function
+    public List<Course> getCourseFilterCriteria(List<Course> courses, int lenghtValue){
+        return courses.stream().filter(course -> course.getName().length() > lenghtValue).toList();
+    }
 
 }
